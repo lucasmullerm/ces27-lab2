@@ -194,5 +194,12 @@ func aggregateVotes(votes []*vote) (result string) {
 	// YOUR CODE GOES HERE //
 	/////////////////////////
 	result = votes[0].value
+	ts := votes[0].timestamp
+	for _, vote := range votes {
+		if vote.timestamp > ts {
+			result = vote.value
+			ts = vote.timestamp
+		}
+	}
 	return
 }
